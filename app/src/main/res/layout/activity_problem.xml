@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@+id/xml_problem_text" />
 
         <TextView
-            android:id="@+id/sml_solution"
+            android:id="@+id/xml_solution"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -62,7 +62,7 @@
             android:layout_marginTop="30dp"
             android:text="점수 : n/10"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sml_solution" />
+            app:layout_constraintTop_toBottomOf="@+id/xml_solution" />
 
         <SeekBar
             android:id="@+id/xml_point_bar"
