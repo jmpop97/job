@@ -3,7 +3,7 @@ package com.example.job;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class solveActivity extends AppCompatActivity {
+public class SolveActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

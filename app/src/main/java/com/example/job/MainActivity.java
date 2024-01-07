@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Intent intent;
@@ -45,15 +44,16 @@ public class MainActivity extends AppCompatActivity {
 //            int phlength=phl.getMeasuredWidth();
             //            intent.putExtra("폰길이",phlength);
 
-            intent = new Intent(getApplicationContext(), problemActivity.class);
+            intent = new Intent(getApplicationContext(), ProblemActivity.class);
             startActivity(intent);
         }
     };
     View.OnClickListener solve_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            intent = new Intent(getApplicationContext(), solveActivity.class);
+            intent = new Intent(getApplicationContext(), SolveActivity.class);
             startActivity(intent);
         }
     };
+
 }
