@@ -1,7 +1,7 @@
 package com.example.job;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class MenuRecycleView extends RecyclerView.Adapter<MenuRecycleView.MenuHolder> {
+    private static OnItemClickListener mListener=null;
     List<String> problem_nums;
+    int problem_num;
     Context context;
     boolean open = false;
 
     int len=1;
-    public MenuRecycleView(Context ct,List<String> problem_nums){
+    public MenuRecycleView(Context ct, List<String> Problem_nums, int Problem_num){
         context=ct;
-        problem_nums=problem_nums;
+        problem_nums=Problem_nums;
+        problem_num=Problem_num;
+
     }
 
     @NonNull
@@ -32,9 +36,34 @@ public class MenuRecycleView extends RecyclerView.Adapter<MenuRecycleView.MenuHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MenuHolder holder, int position) {
-        holder.problem_view.setText(Integer.toString(position));
-        holder.itemView.setOnClickListener(clickListener);
+    public void onBindViewHolder(@NonNull MenuHolder holder, @SuppressLint("RecyclerView") int position) {
+        String name;
+        if (open){
+            name=problem_nums.get(position);
+        }
+        else {
+            name=problem_nums.get(problem_num);
+        }
+        name=name.substring(6,name.length()-5);
+        holder.problem_view.setText(name);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (open){
+                    mListener.onItemClick(view,position,len);
+                    len=1;
+                    open=false;
+                }
+                else {
+                    len = 4;
+                    open = true;
+                }
+                notifyDataSetChanged();
+
+
+            }
+        });
     }
 
     @Override
@@ -42,7 +71,8 @@ public class MenuRecycleView extends RecyclerView.Adapter<MenuRecycleView.MenuHo
         return len;
     }
 
-    public interface OnItemClickListener{void onItem2Click(View v, int pos, int n);}
+    public interface OnItemClickListener{void onItemClick(View v, int pos, int n);}
+    public static void setOnItemClickListener(OnItemClickListener listener){mListener = listener;}
 
     public class MenuHolder extends RecyclerView.ViewHolder{
         TextView problem_view;
@@ -51,20 +81,5 @@ public class MenuRecycleView extends RecyclerView.Adapter<MenuRecycleView.MenuHo
             problem_view=itemView.findViewById(R.id.menu_problem_num);
         }
     }
-    View.OnClickListener clickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (open){
-                len=1;
-                open=false;
-            }
-            else {
-                len=2;
-                open=true;
-            }
-            notifyDataSetChanged();
 
-
-        }
-    };
 }

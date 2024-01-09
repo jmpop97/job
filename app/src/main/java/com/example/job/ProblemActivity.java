@@ -118,7 +118,6 @@ public class ProblemActivity extends AppCompatActivity {
             ) {
                 if (element.contains("필기")){
                     problem_list.add(element);
-                    Log.d("list",element);
                 }
 
             }
@@ -234,11 +233,11 @@ public class ProblemActivity extends AppCompatActivity {
         }
     }
     private void recycleView(){
-        MenuRecycleView menuRecycleView = new MenuRecycleView(this,problem_list);
+        MenuRecycleView menuRecycleView = new MenuRecycleView(this,problem_list,problem_num);
         menu.setAdapter(menuRecycleView);
         menu.setLayoutManager(new LinearLayoutManager(this));
         menu.setHasFixedSize(true);
-        menu.scrollToPosition(2);
+        menu.scrollToPosition(problem_num);
     }
     //control
     private void listenerSetting() {
@@ -246,6 +245,7 @@ public class ProblemActivity extends AppCompatActivity {
         next_problem.setOnClickListener(nextlistener);
         home.setOnClickListener(homelistener);
         point_bar.setOnSeekBarChangeListener(pointlistener);
+        MenuRecycleView.setOnItemClickListener(menuitemListener);
     }
     View.OnClickListener solutionlistener = new View.OnClickListener() {
         @Override
@@ -297,7 +297,16 @@ public class ProblemActivity extends AppCompatActivity {
 
         }
     };
-
+    MenuRecycleView.OnItemClickListener menuitemListener= new MenuRecycleView.OnItemClickListener() {
+        @Override
+        public void onItemClick(View v, int pos, int n) {
+            problem_num=pos;
+            dbProblemJson(problem_list.get(problem_num));
+            dbUserJson(problem_list.get(problem_num));
+            viewProblem();
+            recycleView();
+        }
+    };
     //close
     @Override
     protected void onPause(){
