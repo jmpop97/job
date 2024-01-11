@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MenuRecycleView extends RecyclerView.Adapter<MenuRecycleView.MenuHolder> {
+public class ProblemMenuRecycleView extends RecyclerView.Adapter<ProblemMenuRecycleView.MenuHolder> {
     private static OnItemClickListener mListener=null;
     List<String> problem_nums;
     int problem_num;
@@ -20,7 +20,7 @@ public class MenuRecycleView extends RecyclerView.Adapter<MenuRecycleView.MenuHo
     boolean open = false;
 
     int len=1;
-    public MenuRecycleView(Context ct, List<String> Problem_nums, int Problem_num){
+    public ProblemMenuRecycleView(Context ct, List<String> Problem_nums, int Problem_num){
         context=ct;
         problem_nums=Problem_nums;
         problem_num=Problem_num;

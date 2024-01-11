@@ -1,4 +1,4 @@
-package com.example.job;
+package com.example.Home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.job.ProblemActivity;
+import com.example.job.R;
+import com.example.job.SelectProblemMenuActivity;
 
 public class MainActivity extends AppCompatActivity {
     Intent intent;
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener solve_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            intent = new Intent(getApplicationContext(), SolveActivity.class);
+            intent = new Intent(getApplicationContext(), SelectProblemMenuActivity.class);
             startActivity(intent);
         }
     };
