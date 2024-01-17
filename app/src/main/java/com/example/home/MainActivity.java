@@ -1,4 +1,4 @@
-package com.example.Home;
+package com.example.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.job.ProblemActivity;
+import com.example.problem.ProblemActivity;
 import com.example.job.R;
-import com.example.job.SelectProblemMenuActivity;
+import com.example.problem_selection.SelectProblemMenuActivity;
 
 public class MainActivity extends AppCompatActivity {
     Intent intent;

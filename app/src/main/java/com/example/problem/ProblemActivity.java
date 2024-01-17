@@ -1,4 +1,4 @@
-package com.example.job;
+package com.example.problem;
 
 import static java.lang.Boolean.FALSE;
 
@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import com.example.job.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -232,7 +234,7 @@ public class ProblemActivity extends AppCompatActivity {
         }
     }
     private void recycleView(){
-        ProblemMenuRecycleView problemMenuRecycleView = new ProblemMenuRecycleView(this,problem_list,problem_num);
+        RecycleProblemView problemMenuRecycleView = new RecycleProblemView(this,problem_list,problem_num);
         menu.setAdapter(problemMenuRecycleView);
         menu.setLayoutManager(new LinearLayoutManager(this));
         menu.setHasFixedSize(true);
@@ -244,7 +246,7 @@ public class ProblemActivity extends AppCompatActivity {
         next_problem.setOnClickListener(nextlistener);
         home.setOnClickListener(homelistener);
         point_bar.setOnSeekBarChangeListener(pointlistener);
-        ProblemMenuRecycleView.setOnItemClickListener(menuitemListener);
+        RecycleProblemView.setOnItemClickListener(menuitemListener);
     }
     View.OnClickListener solutionlistener = new View.OnClickListener() {
         @Override
@@ -296,7 +298,7 @@ public class ProblemActivity extends AppCompatActivity {
 
         }
     };
-    ProblemMenuRecycleView.OnItemClickListener menuitemListener= new ProblemMenuRecycleView.OnItemClickListener() {
+    RecycleProblemView.OnItemClickListener menuitemListener= new RecycleProblemView.OnItemClickListener() {
         @Override
         public void onItemClick(View v, int pos, int n) {
             problem_num=pos;

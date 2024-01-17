@@ -1,4 +1,4 @@
-package com.example.job;
+package com.example.problem;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,9 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.job.R;
+
 import java.util.List;
 
-public class ProblemMenuRecycleView extends RecyclerView.Adapter<ProblemMenuRecycleView.MenuHolder> {
+public class RecycleProblemView extends RecyclerView.Adapter<RecycleProblemView.MenuHolder> {
     private static OnItemClickListener mListener=null;
     List<String> problem_nums;
     int problem_num;
@@ -20,7 +22,7 @@ public class ProblemMenuRecycleView extends RecyclerView.Adapter<ProblemMenuRecy
     boolean open = false;
 
     int len=1;
-    public ProblemMenuRecycleView(Context ct, List<String> Problem_nums, int Problem_num){
+    public RecycleProblemView(Context ct, List<String> Problem_nums, int Problem_num){
         context=ct;
         problem_nums=Problem_nums;
         problem_num=Problem_num;
@@ -56,7 +58,7 @@ public class ProblemMenuRecycleView extends RecyclerView.Adapter<ProblemMenuRecy
                     open=false;
                 }
                 else {
-                    len = 4;
+                    len = problem_nums.size();;
                     open = true;
                 }
                 notifyDataSetChanged();
